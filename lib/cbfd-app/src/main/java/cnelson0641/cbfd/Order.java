@@ -10,7 +10,6 @@ public class Order
     private Restaurant restaurant;
     private Payment payment;
     private String[] food_items;
-
     private Integer cost = 0;
 
 
@@ -41,6 +40,8 @@ public class Order
         {
             rest = new Chipotle();
         }
+
+        //TODO add error checking
         restaurant = rest;
     }
 

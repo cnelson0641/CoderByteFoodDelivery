@@ -17,7 +17,10 @@ abstract class Restaurant
     public void sendOrder(String[] food_ordered, Integer cost)
     {
         //TODO stubbed out.  Ideally send an email, or push a msg to AWS SNS
+        System.out.println("Order sent");
     }
+
+    // Getters and setters below here
 
     public String getBankInfo()
     {
