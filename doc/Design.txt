@@ -1,0 +1,59 @@
+- Library classes (need CRUD methods w/filters):
+	- Restaurant:
+		- Attr:  is_open, is_accepting_orders, address, hours{}, cuisines[], food_items[], reviews[], rating, photos[]
+	- Order:
+		- Attr:  status, Restaurant, food_items[], Payment
+	- Payment:
+		- Attr:  square_api_payment
+	- Users:
+		- Customer
+		- RootAdmin
+		- RestaurantAdmin
+	- DB:
+		- AWS RDS 
+- APIs by User:
+	- Customer:
+		- Order:  create, get_status, request_cancel
+		- Restaurant:  get_by_filter
+		- Review:  create
+	- RestaurantAdmin:
+		- Order:  create, get_status, update, cancel
+		- Restaurant:  update
+	- RootAdmin:
+		- Order:  create, get_status, update, cancel
+		- Restaurant:  update, get_by_filter
+		- Review:  create, get_status, update, cancel
+- API hosting:
+	- AWS API Gateway -> AWS Lambda (Java container)
+- Code artifacts:
+	- Java container pushed to AWS ECR (container registry):
+		FROM java:8  
+		COPY . /var/www/java  
+		WORKDIR /var/www/java  
+		RUN javac CBFD.java  
+		CMD ["java", "CBFD", api_request]
+	- CBFD.java
+	- CBFD library
+	- Dockerfile
+- Deployment pipeline:
+	- AWS CodePipeline
+- Storage:
+	- AWS RDS mysql
+- Technologies:
+	- AWS:  Provides technologies needed and a platform to host it on, scales easily, provides metrics/tracking, is cost-efficient when using serverless, and almost all services are fully-managed not requiring manual administration.
+	- AWS API Gateway:  REST API and manages the API endpoints
+	- AWS Lambda:  cost-efficient because it is serverless, and easy to deploy to using containers
+	- Docker:  simple deployment, easy build pipeline steps, and integrates with ECR
+	- AWS ECR:  fully managed container registry that doesn't require manual administration
+	- AWS RDS:  simple mysql db
+	- AWS CodePipeline:  automatic building, testing, and deployment of the application
+- Build steps:
+	- Create CBFD.jar
+	- Run unit tests
+	- Build docker image from Dockerfile
+	- Publish docker image to ECR
+	- Lambda updates to new image when it detects it
+- Application configuration via Terraform:
+	- lambda.tf
+	- apigateway.tf
+
