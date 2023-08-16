@@ -1,0 +1,13 @@
+TODO code:
+- add error checking for all parameter passing, and update callers
+- add more restaurants
+- dynamically create object type for restaurant, removing the if block in Order
+- add api to interact with square api for payments
+- update cost from Integer to a floating point number or a built in for dollars
+- create a db module and integrate with RDS
+
+TODO deployment:
+- add handlers and libraries for AWS Lambda integration
+- create a lamda function
+- create an API Gateway that calls the lambda function
+- create an RDS db to hold info

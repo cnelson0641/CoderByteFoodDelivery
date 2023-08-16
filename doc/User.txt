@@ -1,0 +1,8 @@
+To run:
+- git clone this repo
+- install java and maven locally
+- cd lib/cbfd-app
+- mvn package
+- cd ..
+- docker build cbfd-app -t .
+- docker run cbfd-app chipotle visaxxxx burrito,guac,soda
