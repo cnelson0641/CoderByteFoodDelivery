@@ -8,3 +8,6 @@ Initial project template created.  Requirements from CoderByte are in the doc/ f
 
 ### 8/16/2023
 Implementation finished.  User and developer documentation are in the doc/ folder.
+
+### 8/16/2023
+Design document updated and put under the doc/ folder.
